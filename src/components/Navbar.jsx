@@ -10,7 +10,7 @@ const navLinks = [
   { label: 'Tech Solutions', path: '/tech-solutions' },
   { label: 'Why Choose Us', path: '/why-tsd' },
   { label: 'About Us', path: '/about-us' },
-  { label: 'Careers', path: '/careers' }
+  { label: 'Contact Us', path: '/contact-us' }
 ];
 
 export default function Navbar() {

@@ -8,7 +8,7 @@ import StaffingServices from './pages/StaffingServices';
 import TechSolutions from './pages/TechSolutions';
 import WhyChooseUs from './pages/WhyChooseUs';
 import AboutUs from './pages/AboutUs';
-import Careers from './pages/Careers';
+import ContactUs from './pages/ContactUs';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsConditions from './pages/TermsConditions';
 
@@ -27,7 +27,7 @@ function App() {
               <Route path="/tech-solutions" element={<TechSolutions />} />
               <Route path="/why-tsd" element={<WhyChooseUs />} />
               <Route path="/about-us" element={<AboutUs />} />
-              <Route path="/careers" element={<Careers />} />
+              <Route path="/contact-us" element={<ContactUs />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-conditions" element={<TermsConditions />} />
             </Routes>

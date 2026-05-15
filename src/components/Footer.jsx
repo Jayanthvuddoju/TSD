@@ -7,7 +7,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#03211f] text-text-primary-dark border-t-[3px] border-brand-teal relative overflow-hidden">
+    <footer className="bg-[#063330] text-text-primary-dark border-t-[3px] border-brand-teal relative z-20 overflow-hidden">
       <FloatingPathsBackground position={1}>
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-brand"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8 relative z-10">
@@ -38,7 +38,7 @@ export default function Footer() {
                 <li><Link to="/tech-solutions" className="text-white/70 hover:text-brand-teal text-sm transition-colors">Tech Solutions</Link></li>
                 <li><Link to="/why-tsd" className="text-white/70 hover:text-brand-teal text-sm transition-colors">Why Choose Us</Link></li>
                 <li><Link to="/about-us" className="text-white/70 hover:text-brand-teal text-sm transition-colors">About Us</Link></li>
-                <li><Link to="/careers" className="text-white/70 hover:text-brand-teal text-sm transition-colors">Careers</Link></li>
+                <li><Link to="/contact-us" className="text-white/70 hover:text-brand-teal text-sm transition-colors">Contact Us</Link></li>
               </ul>
             </div>
 

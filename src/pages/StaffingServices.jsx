@@ -2,7 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Users, FileText, Search, Cpu, CheckCircle2, ArrowRight } from 'lucide-react';
 import Button from '../components/Button';
-import { FloatingPathsBackground } from '../components/ui/floating-paths';
+import Grainient from '../components/Grainient/Grainient';
+
 
 export default function StaffingServices() {
   const fadeInUp = {
@@ -58,11 +59,41 @@ export default function StaffingServices() {
   ];
 
   return (
-    <div className="w-full pt-28">
-      
-      {/* 1. HERO SECTION */}
-      <section className="w-full py-20 lg:py-28 bg-transparent text-center relative overflow-hidden px-4 sm:px-6 lg:px-8">
-        <FloatingPathsBackground position={-1} className="absolute inset-0" />
+    <div className="w-full relative min-h-screen">
+      {/* Page Background */}
+      <div className="fixed inset-0 z-0">
+        <Grainient
+          color1="#158178"
+          color2="#063330"
+          color3="#1ca89d"
+          timeSpeed={0.8}
+          colorBalance={0.1}
+          warpStrength={1.2}
+          warpFrequency={3.5}
+          warpSpeed={0.8}
+          warpAmplitude={25}
+          blendAngle={30}
+          blendSoftness={0.25}
+          rotationAmount={350}
+          noiseScale={1.2}
+          grainAmount={0.04}
+          grainScale={2.5}
+          grainAnimated={true}
+          contrast={1.1}
+          gamma={1.0}
+          saturation={1.0}
+          centerX={0.0}
+          centerY={0.0}
+          zoom={0.7}
+        />
+        <div className="absolute inset-0 bg-[#063330]/30" />
+      </div>
+
+      <div className="relative z-10 pt-28">
+        
+        {/* 1. HERO SECTION */}
+        <section className="w-full py-20 lg:py-28 bg-transparent text-center relative overflow-hidden px-4 sm:px-6 lg:px-8">
+
         <div className="max-w-5xl mx-auto relative z-10">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -194,20 +225,20 @@ export default function StaffingServices() {
               How We Place the Right People
             </h2>
           </div>
-          <div className="space-y-8 max-w-4xl mx-auto">
+          <div className="space-y-6 max-w-4xl mx-auto">
             {processSteps.map((proc, idx) => (
               <motion.div 
                 key={idx}
                 variants={fadeInUp}
                 initial="initial"
                 whileInView="whileInView"
-                className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-10 p-8 bg-[#03211f] backdrop-blur-2xl rounded-3xl border-t border-l border-white/20 border-b border-r border-black/50 shadow-xl hover:border-brand-teal/50 hover:shadow-[0_0_20px_rgba(28,168,157,0.3)] transition-all duration-500"
+                className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-10 py-6 group transition-all duration-300"
               >
-                <div className="w-16 h-16 rounded-full bg-brand-teal text-black flex items-center justify-center font-heading font-bold text-2xl shadow-[0_0_20px_rgba(28,168,157,0.5)] shrink-0">
+                <div className="w-16 h-16 rounded-full bg-brand-teal/10 border border-brand-teal/30 text-brand-teal group-hover:bg-brand-teal group-hover:text-black flex items-center justify-center font-heading font-bold text-2xl transition-all duration-500 shrink-0 shadow-[0_0_15px_rgba(28,168,157,0.1)] group-hover:shadow-[0_0_25px_rgba(28,168,157,0.5)] group-hover:scale-105">
                   {proc.step}
                 </div>
                 <div>
-                  <h3 className="text-2xl font-heading font-bold text-white mb-2">{proc.title}</h3>
+                  <h3 className="text-2xl font-heading font-bold text-white mb-2 group-hover:text-white transition-colors duration-300">{proc.title}</h3>
                   <p className="text-lg text-white/80 leading-relaxed">{proc.desc}</p>
                 </div>
               </motion.div>
@@ -218,7 +249,6 @@ export default function StaffingServices() {
 
       {/* 7. BOTTOM CTA SECTION */}
       <section className="w-full py-24 bg-transparent text-center relative overflow-hidden px-4 sm:px-6 lg:px-8 border-t border-white/10">
-        <FloatingPathsBackground position={1} className="absolute inset-0" />
         <div className="max-w-4xl mx-auto relative z-10">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white mb-6 tracking-tight">
             Let's Find Your Next Great Hire
@@ -232,6 +262,7 @@ export default function StaffingServices() {
         </div>
       </section>
 
+      </div>
     </div>
   );
 }
