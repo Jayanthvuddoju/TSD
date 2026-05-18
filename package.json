@@ -17,7 +17,10 @@
   },
   "dependencies": {
     "@fontsource/dm-sans": "^5.2.8",
+    "@fontsource/exo-2": "^5.2.8",
+    "@fontsource/hanken-grotesk": "^5.2.8",
     "@fontsource/inter": "^5.1.0",
+    "@fontsource/space-grotesk": "^5.2.10",
     "@fontsource/syne": "^5.2.7",
     "@vitejs/plugin-react": "^6.0.2",
     "framer-motion": "^12.38.0",
@@ -25,6 +28,7 @@
     "ogl": "^1.0.11",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "react-router-dom": "^7.15.0"
+    "react-router-dom": "^7.15.0",
+    "three": "^0.184.0"
   }
 }

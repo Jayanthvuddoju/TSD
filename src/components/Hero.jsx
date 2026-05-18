@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import Button from './Button';
-import AnimatedLiquidBackground from './AnimatedLiquidBackground';
+import MagicRings from './MagicRings/MagicRings';
 
 export default function Hero() {
   // Stagger animation variants for text reveal
@@ -31,8 +31,33 @@ export default function Hero() {
 
   return (
     <section className="relative w-full min-h-[100svh] flex items-center justify-center bg-[#063330] overflow-hidden pt-24 pb-16">
-      {/* High-Fidelity WebGL Metallic Silk Background */}
-      <AnimatedLiquidBackground preset="TSD" color1="#063330" color2="#1ca89d" color3="#063330" className="opacity-100 absolute inset-0 z-0" />
+      {/* High-Fidelity WebGL MagicRings Background */}
+      <div className="absolute inset-0 z-0 opacity-90 pointer-events-auto">
+        <MagicRings
+          color="#1ca89d"
+          colorTwo="#0dfcd2"
+          ringCount={6}
+          speed={0.8}
+          attenuation={8}
+          lineThickness={2}
+          baseRadius={0.3}
+          radiusStep={0.09}
+          scaleRate={0.08}
+          opacity={0.85}
+          blur={0}
+          noiseAmount={0.03}
+          rotation={15}
+          ringGap={1.3}
+          fadeIn={0.8}
+          fadeOut={0.4}
+          followMouse={true}
+          mouseInfluence={0.2}
+          hoverScale={1.15}
+          parallax={0.04}
+          clickBurst={true}
+        />
+      </div>
+
 
       {/* Hero Content Container */}
       <div className="relative z-30 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center text-center">
