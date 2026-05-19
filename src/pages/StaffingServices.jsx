@@ -44,11 +44,7 @@ export default function StaffingServices() {
     "IAM Specialists", "ERP Consultants", "QA & Test Engineers", "Network & Infrastructure Engineers"
   ];
 
-  const industries = [
-    "Banking & Financial Services", "Insurance", "Manufacturing & Automotive", 
-    "Telecommunications", "Healthcare & Life Sciences", "Oil & Gas", 
-    "Government & Public Sector", "E-Commerce & Retail"
-  ];
+
 
   const processSteps = [
     { step: "01", title: "Briefing", desc: "We learn your role requirements, team culture, and business context in depth — because a great hire isn't just about skills, it's about fit." },
@@ -196,28 +192,7 @@ export default function StaffingServices() {
         </div>
       </section>
 
-      {/* 5. INDUSTRIES WE SERVE */}
-      <section className="w-full py-24 bg-transparent px-4 sm:px-6 lg:px-8 border-t border-white/10">
-        <div className="max-w-6xl mx-auto text-center">
-          <motion.div variants={fadeInUp} initial="initial" whileInView="whileInView">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-white mb-12">
-              Industries We Serve
-            </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-              {industries.map((ind, idx) => (
-                <div 
-                  key={idx}
-                  className="p-6 bg-[#03211f]/60 backdrop-blur-md rounded-2xl border border-white/10 flex items-center justify-center text-center hover:border-brand-teal/50 hover:shadow-[0_0_15px_rgba(28,168,157,0.3)] transition-all duration-300 text-lg text-white font-medium min-h-[100px]"
-                >
-                  {ind}
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 6. OUR RECRUITMENT PROCESS */}
+      {/* 5. OUR RECRUITMENT PROCESS */}
       <section className="w-full py-24 bg-transparent px-4 sm:px-6 lg:px-8 border-t border-white/10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -247,7 +222,7 @@ export default function StaffingServices() {
         </div>
       </section>
 
-      {/* 7. BOTTOM CTA SECTION */}
+      {/* 6. BOTTOM CTA SECTION */}
       <section className="w-full py-24 bg-transparent text-center relative overflow-hidden px-4 sm:px-6 lg:px-8 border-t border-white/10">
         <div className="max-w-4xl mx-auto relative z-10">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white mb-6 tracking-tight">

@@ -2,7 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   CheckCircle2, Globe, Shield, Zap, TrendingUp, Users, 
-  MapPin, Calendar, Layout, Award, ArrowRight
+  MapPin, Calendar, Layout, Award, ArrowRight,
+  Landmark, Factory, PhoneCall, Heart, Fuel, Building2, ShoppingCart, Cpu
 } from 'lucide-react';
 import Button from '../components/Button';
 import Grainient from '../components/Grainient/Grainient';
@@ -60,6 +61,18 @@ export default function WhyChooseUs() {
     "Telecommunications", "Healthcare & Life Sciences", "Oil & Gas",
     "Government & Public Sector", "E-Commerce & Retail", "Technology Companies"
   ];
+
+  const industryIcons = {
+    "Banking & Financial Services": Landmark,
+    "Insurance": Shield,
+    "Manufacturing & Automotive": Factory,
+    "Telecommunications": PhoneCall,
+    "Healthcare & Life Sciences": Heart,
+    "Oil & Gas": Fuel,
+    "Government & Public Sector": Building2,
+    "E-Commerce & Retail": ShoppingCart,
+    "Technology Companies": Cpu
+  };
 
   return (
     <div className="w-full relative min-h-screen">
@@ -199,15 +212,25 @@ export default function WhyChooseUs() {
               <h2 className="text-4xl sm:text-5xl font-heading font-bold text-white mb-12">
                 Industries We Serve
               </h2>
-              <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-                {industries.map((ind, idx) => (
-                  <div 
-                    key={idx}
-                    className="px-6 py-4 bg-[#03211f]/60 backdrop-blur-md rounded-2xl border border-white/10 hover:border-brand-teal/50 hover:shadow-[0_0_15px_rgba(28,168,157,0.3)] transition-all duration-300 text-lg text-white font-medium"
-                  >
-                    {ind}
-                  </div>
-                ))}
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-x-8 gap-y-12 max-w-4xl mx-auto mt-16">
+                {industries.map((ind, idx) => {
+                  const IconComp = industryIcons[ind] || Globe;
+                  return (
+                    <div 
+                      key={idx}
+                      className="group flex flex-col items-center gap-3 transition-transform duration-300 cursor-default"
+                    >
+                      <IconComp 
+                        size={40} 
+                        strokeWidth={1.5} 
+                        className="text-brand-teal/70 group-hover:text-brand-teal group-hover:scale-110 transition-all duration-300" 
+                      />
+                      <span className="text-lg font-heading font-semibold text-white/95 group-hover:text-brand-teal transition-colors duration-300">
+                        {ind}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </motion.div>
           </div>

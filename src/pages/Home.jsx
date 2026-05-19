@@ -129,7 +129,7 @@ export default function Home() {
       <Hero />
 
       {/* Main Content Wrapper with Grainient Background (Post-Hero) */}
-      <div className="relative w-full overflow-hidden">
+      <div className="relative w-full overflow-x-clip">
         {/* Sections Background Layer */}
         <div className="absolute inset-0 z-0">
           <Grainient
@@ -309,7 +309,7 @@ export default function Home() {
                   { title: "People-Centered Approach", desc: "Our team combines deep technical knowledge with genuine partnership — we succeed only when you succeed.", icon: Heart, color: "text-brand-purple" },
                 ].map((point, i) => {
                   const IconComp = point.icon;
-                  const stickyTop = `calc(120px + ${i * 100}px)`;
+                  const stickyTop = `calc(120px + ${i * 96}px)`;
                   return (
                     <div 
                       key={i} 
