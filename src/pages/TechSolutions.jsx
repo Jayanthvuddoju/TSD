@@ -6,9 +6,11 @@ import {
   Settings, Lock, Server, Check, Zap, HelpCircle, Network, Shield
 } from 'lucide-react';
 import Button from '../components/Button';
+import { useModal } from '../context/ModalContext';
 import Grainient from '../components/Grainient/Grainient';
 
 export default function TechSolutions() {
+  const { openModal } = useModal();
   const [activeDevTab, setActiveDevTab] = useState('frontend');
 
   const fadeInUp = {
@@ -263,10 +265,7 @@ export default function TechSolutions() {
               <Button 
                 variant="primary" 
                 className="text-lg px-10 py-4 shadow-2xl hover:shadow-brand-teal/50"
-                onClick={() => {
-                  const contactEl = document.getElementById('contact-cta');
-                  if (contactEl) contactEl.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={() => openModal("Book a Free Consultation")}
               >
                 Book a Free Consultation
               </Button>
@@ -629,9 +628,7 @@ export default function TechSolutions() {
               <Button 
                 variant="primary" 
                 className="text-lg px-12 py-5 shadow-2xl hover:shadow-brand-teal/50 group/btn"
-                onClick={() => {
-                  window.location.href = '/contact-us';
-                }}
+                onClick={() => openModal("Claim Your Free Consulting Session")}
               >
                 Claim Your Free Consulting Session
                 <ArrowRight className="inline-block ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" />

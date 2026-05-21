@@ -6,9 +6,11 @@ import {
   Landmark, Factory, PhoneCall, Heart, Fuel, Building2, ShoppingCart, Cpu
 } from 'lucide-react';
 import Button from '../components/Button';
+import { useModal } from '../context/ModalContext';
 import Grainient from '../components/Grainient/Grainient';
 
 export default function WhyChooseUs() {
+  const { openModal } = useModal();
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -251,7 +253,7 @@ export default function WhyChooseUs() {
               <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
                 Start with a free consulting session — no obligation, no pressure. Just an honest conversation about your technology challenges.
               </p>
-              <Button variant="primary" className="text-lg px-12 py-5 shadow-2xl hover:shadow-brand-teal/50 group">
+              <Button variant="primary" className="text-lg px-12 py-5 shadow-2xl hover:shadow-brand-teal/50 group" onClick={() => openModal("Claim Free Consulting")}>
                 Claim Free Consulting
                 <ArrowRight className="inline-block ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>

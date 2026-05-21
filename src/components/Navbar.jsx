@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import Button from './Button';
+import { useModal } from '../context/ModalContext';
 import logo from '../assets/logo.png';
 
 const navLinks = [
@@ -17,6 +18,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { openModal } = useModal();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -57,7 +59,7 @@ export default function Navbar() {
 
           {/* CTA Button */}
           <div className="hidden md:flex">
-            <Button variant="primary">Claim Free Consulting</Button>
+            <Button variant="primary" onClick={() => openModal("Claim Free Consulting")}>Claim Free Consulting</Button>
           </div>
 
           {/* Mobile menu button */}
@@ -90,7 +92,7 @@ export default function Navbar() {
                 );
               })}
               <div className="mt-4 px-3">
-                <Button variant="primary" className="w-full">Claim Free Consulting</Button>
+                <Button variant="primary" className="w-full" onClick={() => openModal("Claim Free Consulting")}>Claim Free Consulting</Button>
               </div>
             </div>
           </div>

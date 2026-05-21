@@ -2,10 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Users, FileText, Search, Cpu, CheckCircle2, ArrowRight } from 'lucide-react';
 import Button from '../components/Button';
+import { useModal } from '../context/ModalContext';
 import Grainient from '../components/Grainient/Grainient';
 
 
 export default function StaffingServices() {
+  const { openModal } = useModal();
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -112,7 +114,7 @@ export default function StaffingServices() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Button variant="primary" className="text-lg px-10 py-4 shadow-2xl hover:shadow-brand-teal/50">
+            <Button variant="primary" className="text-lg px-10 py-4 shadow-2xl hover:shadow-brand-teal/50" onClick={() => openModal("Discuss Your Hiring Needs")}>
               Discuss Your Hiring Needs
             </Button>
           </motion.div>
@@ -231,7 +233,7 @@ export default function StaffingServices() {
           <p className="text-xl sm:text-2xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
             Whether you need one specialist or a full delivery team, TSD has the network and expertise to deliver — faster than you expect.
           </p>
-          <Button variant="primary" className="text-lg px-12 py-5 shadow-2xl hover:shadow-brand-teal/50">
+          <Button variant="primary" className="text-lg px-12 py-5 shadow-2xl hover:shadow-brand-teal/50" onClick={() => openModal("Start a Conversation")}>
             Start a Conversation
           </Button>
         </div>

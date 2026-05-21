@@ -6,9 +6,11 @@ import {
   Cpu, Database, Shield, Cloud, Code, Hexagon
 } from 'lucide-react';
 import Button from '../components/Button';
+import { useModal } from '../context/ModalContext';
 import Grainient from '../components/Grainient/Grainient';
 
 export default function AboutUs() {
+  const { openModal } = useModal();
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -299,7 +301,7 @@ export default function AboutUs() {
                 We'd love to share more about TSD and explore how we might work together.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-6">
-                <Button variant="primary" className="text-lg px-12 py-5 flex items-center justify-center gap-2">
+                <Button variant="primary" className="text-lg px-12 py-5 flex items-center justify-center gap-2" onClick={() => openModal("Contact Us Today")}>
                   <Mail size={20} />
                   Contact Us Today
                 </Button>

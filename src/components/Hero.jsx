@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import Button from './Button';
+import { useModal } from '../context/ModalContext';
 import MagicRings from './MagicRings/MagicRings';
 
 export default function Hero() {
+  const { openModal } = useModal();
   // Stagger animation variants for text reveal
   const containerVariants = {
     hidden: { opacity: 1 },
@@ -100,6 +102,7 @@ export default function Hero() {
             <Button 
               variant="primary" 
               className="text-md font-bold px-8 py-4 flex items-center justify-center gap-2 group relative overflow-hidden bg-gradient-brand hover:scale-105 transition-all duration-300 rounded-xl shadow-[0_0_20px_rgba(29,191,160,0.3)] text-white"
+              onClick={() => openModal("Claim Free Consulting")}
             >
               Claim Free Consulting
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />

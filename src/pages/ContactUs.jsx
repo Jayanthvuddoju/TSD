@@ -1,7 +1,7 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Mail, Phone, MapPin, Send, Share2, Camera, Video, ArrowRight
+  Mail, Phone, MapPin, Send, Share2, Camera, Video, ArrowRight, ChevronDown
 } from 'lucide-react';
 import Button from '../components/Button';
 import Grainient from '../components/Grainient/Grainient';
@@ -13,6 +13,30 @@ export default function ContactUs() {
     viewport: { once: true },
     transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
   };
+
+  const [selectedSubject, setSelectedSubject] = React.useState("General Inquiry");
+  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+  const dropdownRef = React.useRef(null);
+
+  React.useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const subjects = [
+    "General Inquiry",
+    "Tech Solutions",
+    "Staffing Services",
+    "SAP Consulting",
+    "Other"
+  ];
 
   const contactInfo = [
     {
@@ -108,7 +132,7 @@ export default function ContactUs() {
         {/* 2. CONTACT CONTENT SECTION */}
         <section className="w-full px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
               
               {/* Left Column: Form */}
               <motion.div 
@@ -142,15 +166,66 @@ export default function ContactUs() {
                     </div>
                   </div>
                   
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-white/70 ml-1">Subject</label>
-                    <select className="w-full px-6 py-4 bg-black/40 border border-white/10 rounded-2xl focus:border-brand-teal/50 focus:outline-none focus:ring-1 focus:ring-brand-teal/50 text-white/70 transition-all appearance-none">
-                      <option>General Inquiry</option>
-                      <option>Tech Solutions</option>
-                      <option>Staffing Services</option>
-                      <option>SAP Consulting</option>
-                      <option>Other</option>
-                    </select>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium text-white/70 ml-1">Contact Number</label>
+                      <input 
+                        type="tel" 
+                        placeholder="+60 12-345 6789" 
+                        className="w-full px-6 py-4 bg-black/40 border border-white/10 rounded-2xl focus:border-brand-teal/50 focus:outline-none focus:ring-1 focus:ring-brand-teal/50 text-white transition-all"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium text-white/70 ml-1">Subject</label>
+                      <div className="relative" ref={dropdownRef}>
+                        <button
+                          type="button"
+                          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                          className="w-full px-6 py-4 bg-black/40 border border-white/10 rounded-2xl focus:border-brand-teal/50 focus:outline-none focus:ring-1 focus:ring-brand-teal/50 text-white transition-all flex items-center justify-between text-left cursor-pointer"
+                        >
+                          <span className={selectedSubject ? "text-white" : "text-white/50"}>
+                            {selectedSubject}
+                          </span>
+                          <ChevronDown 
+                            size={20} 
+                            className={`text-white/50 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180 text-brand-teal' : ''}`} 
+                          />
+                        </button>
+
+                        <AnimatePresence>
+                          {isDropdownOpen && (
+                            <motion.div
+                              initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                              animate={{ opacity: 1, y: 0, scale: 1 }}
+                              exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                              className="absolute left-0 right-0 mt-2 bg-[#021817]/95 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl z-50 overflow-hidden py-2"
+                            >
+                              {subjects.map((sub, idx) => (
+                                <button
+                                  key={idx}
+                                  type="button"
+                                  onClick={() => {
+                                    setSelectedSubject(sub);
+                                    setIsDropdownOpen(false);
+                                  }}
+                                  className={`w-full px-6 py-3.5 text-left transition-all flex items-center justify-between text-sm ${
+                                    selectedSubject === sub 
+                                      ? 'bg-brand-teal/20 text-brand-teal font-semibold' 
+                                      : 'text-white/80 hover:bg-brand-teal/10 hover:text-white'
+                                  }`}
+                                >
+                                  <span>{sub}</span>
+                                  {selectedSubject === sub && (
+                                    <div className="w-1.5 h-1.5 rounded-full bg-brand-teal shadow-[0_0_8px_#1ca89d]" />
+                                  )}
+                                </button>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    </div>
                   </div>
                   
                   <div className="space-y-2">
@@ -229,7 +304,7 @@ export default function ContactUs() {
                       KL Sentral, 50470 Kuala Lumpur, Malaysia
                     </p>
                     <div className="pt-6">
-                      <Button variant="secondary" className="flex items-center gap-2 group">
+                      <Button variant="secondary" className="flex items-center gap-2 group text-white hover:text-brand-teal">
                         Get Directions
                         <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                       </Button>

@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Button from '../components/Button';
+import { useModal } from '../context/ModalContext';
 import Card from '../components/Card';
 import Hero from '../components/Hero';
 import cybersecurityImage from '../assets/cybersecurity.png';
@@ -19,6 +20,7 @@ import staffingImage from '../assets/staffing.png';
 import Grainient from '../components/Grainient/Grainient';
 
 export default function Home() {
+  const { openModal } = useModal();
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [activeProcess, setActiveProcess] = useState(0);
 
@@ -462,7 +464,7 @@ export default function Home() {
               <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
                 Book your free consulting session today and discover how TSD can accelerate your digital journey.
               </p>
-              <Button variant="primary" className="text-lg px-10 py-4 shadow-xl hover:shadow-2xl">
+              <Button variant="primary" className="text-lg px-10 py-4 shadow-xl hover:shadow-2xl" onClick={() => openModal("Claim Free Consulting")}>
                 Claim Free Consulting
               </Button>
             </div>
